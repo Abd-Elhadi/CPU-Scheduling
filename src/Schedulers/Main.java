@@ -33,7 +33,7 @@ public class Main {
 			System.out.print( (i+1) + "th Process burst time: ");
 			p.setBurstTime(input.nextInt());
 
-			System.out.print( (i+1) + "th Process queue qumber: ");
+			System.out.print( (i+1) + "th Process queue number: ");
 			p.setPriority(input.nextInt());
 
 			Processes.add(p);	

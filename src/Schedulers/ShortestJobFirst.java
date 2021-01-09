@@ -2,7 +2,7 @@ package Schedulers;
 
 import java.util.ArrayList;
 
-public class ShortestJobFirst  { 
+public class ShortestJobFirst { 
 	
 	ShortestJobFirst (ArrayList<Process> proc){
 		findavgTime(proc, proc.size());
