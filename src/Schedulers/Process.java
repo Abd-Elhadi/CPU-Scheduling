@@ -7,6 +7,7 @@ public class Process implements Comparable<Process> {
 	private int ArrivalTime;
 	private int Priority;
 	private int WaitingTime;
+	private int remainingTime;
 	private int TurnaroundTime;
 
 	private int QuantumTime; // this will be used in RR Scheduling
@@ -26,22 +27,25 @@ public class Process implements Comparable<Process> {
 	public Process(Process P) {
 		Name = P.getName();
 		BurstTime = P.getBurstTime();
+		remainingTime = P.getBurstTime();
 		ArrivalTime = P.getArrivalTime();
 		Priority = P.getPriority();
-		processingTime = P.getProcessingTime();
 		StartTime = -1; 
-		LastTimeAged = ArrivalTime;		
+		LastTimeAged = ArrivalTime;
+		setProcessingTime(BurstTime);		
 	}
 	
 	// parameterized constructor 
 	public Process(String Name, int arrivalTime, int burstTime , int queueNumber) {
 		this.Name = Name;
 		this.BurstTime = burstTime;
+		remainingTime = burstTime;
 		this.ArrivalTime = arrivalTime;
 		this.Priority = queueNumber;	
-		this.processingTime = burstTime;
 		StartTime = -1; 
 		LastTimeAged = ArrivalTime;
+		setProcessingTime(BurstTime);
+		
 	}
 
 	void Execute(){
@@ -56,6 +60,22 @@ public class Process implements Comparable<Process> {
 	public void setBurstTime(int burstTime) {
 		BurstTime = burstTime;
 	}
+	
+	public void resetRemainingTime(){
+        this.remainingTime = this.BurstTime;
+    }
+	
+    public int getRemainingTime() {
+        return remainingTime;
+    }
+    
+    public void setRemainingTime(int remainingTime) {
+        this.remainingTime = remainingTime;
+    }
+    
+    public void decrementRemainingTime(){
+        this.remainingTime--;
+    }
 
 	public void setArrivalTime(int arrivalTime) {
 		ArrivalTime = arrivalTime;
@@ -153,4 +173,13 @@ public class Process implements Comparable<Process> {
 	public void setEndTime(int endTime) {
 		EndTime = endTime;
 	}
+
+
+    public void incrementWaitingTime(){
+        this.WaitingTime++;
+    }
+    
+    public void decrementPriority(){
+        --Priority;
+    }
 }
