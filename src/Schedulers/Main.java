@@ -53,6 +53,8 @@ public class Main {
 			RoundRobin RRS = new RoundRobin(Processes, RRQuantum);
 		}
 		else if(option == 3) {
+			PriorityScheduling pps = new PriorityScheduling(Processes, 2);
+			pps.start();
 
 		}
 		else if(option == 4)  {
