@@ -36,7 +36,7 @@ public class Main {
 			System.out.print( (i+1) + "th Process queue number: ");
 			p.setPriority(input.nextInt());
 
-			Processes.add(p);	
+			Processes.add(p);
 		}
 
 		System.out.println("Select the Scheduler you want to use:"
@@ -50,6 +50,7 @@ public class Main {
 
 		}
 		else if(option == 2) {
+			RoundRobin.FingAvg(Processes,RRQuantum);
 
 		}
 		else if(option == 3) {
