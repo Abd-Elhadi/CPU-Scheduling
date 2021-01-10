@@ -27,7 +27,7 @@ public class Main {
 			System.out.print( (i+1) + "th Process name: ");
 			p.setName(input.nextLine());
 
-			System.out.print( (i+1) + "th Process arraival time: ");
+			System.out.print( (i+1) + "th Process arrival time: ");
 			p.setArrivalTime(input.nextInt()) ;
 
 			System.out.print( (i+1) + "th Process burst time: ");
@@ -56,7 +56,7 @@ public class Main {
 
 		}
 		else if(option == 4)  {
-
+			MultiLevelScheduling MLS = new MultiLevelScheduling(Processes, RRQuantum);
 		}
 		else if (option == 5) {
 			System.exit(0);
