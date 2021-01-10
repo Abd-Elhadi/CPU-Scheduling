@@ -28,9 +28,9 @@ public class Process implements Comparable<Process> {
 		BurstTime = P.getBurstTime();
 		ArrivalTime = P.getArrivalTime();
 		Priority = P.getPriority();
+		processingTime = P.getProcessingTime();
 		StartTime = -1; 
-		LastTimeAged = ArrivalTime;
-		setProcessingTime(BurstTime);		
+		LastTimeAged = ArrivalTime;		
 	}
 	
 	// parameterized constructor 
@@ -39,10 +39,9 @@ public class Process implements Comparable<Process> {
 		this.BurstTime = burstTime;
 		this.ArrivalTime = arrivalTime;
 		this.Priority = queueNumber;	
+		this.processingTime = burstTime;
 		StartTime = -1; 
 		LastTimeAged = ArrivalTime;
-		setProcessingTime(BurstTime);
-		
 	}
 
 	void Execute(){

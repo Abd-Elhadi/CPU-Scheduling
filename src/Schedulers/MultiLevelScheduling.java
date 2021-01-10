@@ -116,17 +116,18 @@ public class MultiLevelScheduling {
 			if (processAvailable) {
 				if (queueNum == 1 && !executeProcess(p, queueNum)) {
 					index1++;
-					if (index1 == RoundRobin.size()) {
-						index1 = 0;
-					}
 				} else if (queueNum == 2 && !executeProcess(p, queueNum)) {
 					index2++;
-					if (index2 == FCFS.size()) {
-						index2 = 0;
-					}
 				}
 			} else {
 				time++;
+			}
+			
+			if (index1 == RoundRobin.size()) {
+				index1 = 0;
+			}
+			if (index2 == FCFS.size()) {
+				index2 = 0;
 			}
 		}
 		
@@ -136,12 +137,13 @@ public class MultiLevelScheduling {
 			if (p.getArrivalTime() <= time) {
 				if (!executeProcess(p, 2)) {
 					index2++;
-					if (index2 == FCFS.size()) {
-						index2 = 0;
-					}
 				}
 			} else {
 				time++;
+			}
+			
+			if (index2 == FCFS.size()) {
+				index2 = 0;
 			}
 		}
 		System.out.println("\n\n");
