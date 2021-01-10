@@ -105,12 +105,16 @@ public class MultiLevelScheduling {
 							index2 = 0;
 							p = FCFS.get(index2);
 						}
+					} else {
+						processAvailable = true;
 					}
 				} else {
 					queueNum = 1;
 					index1 = 0;
 					p = RoundRobin.get(index1);
 				}
+			} else {
+				processAvailable = true;
 			}
 			
 			if (processAvailable) {
