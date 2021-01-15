@@ -29,10 +29,7 @@ public class Process implements Comparable<Process> {
 	public Process(Process P) {
 		Name = P.getName();
 		BurstTime = P.getBurstTime();
-<<<<<<< HEAD
-=======
 		FixedBurstTime = P.getFixedBurstTime();
->>>>>>> 46c25b5905050e3c366cc639c18258f68dfa9ab9
 		remainingTime = P.getBurstTime();
 		ArrivalTime = P.getArrivalTime();
 		Priority = P.getPriority();
@@ -45,10 +42,7 @@ public class Process implements Comparable<Process> {
 	public Process(String Name, int arrivalTime, int burstTime , int queueNumber) {
 		this.Name = Name;
 		this.BurstTime = burstTime;
-<<<<<<< HEAD
-=======
 		this.FixedBurstTime=burstTime;
->>>>>>> 46c25b5905050e3c366cc639c18258f68dfa9ab9
 		remainingTime = burstTime;
 		this.ArrivalTime = arrivalTime;
 		this.Priority = queueNumber;	
@@ -192,8 +186,7 @@ public class Process implements Comparable<Process> {
     public void decrementPriority(){
         --Priority;
     }
-<<<<<<< HEAD
-=======
+
 
 	public int getExitTime() {
 		return ExitTime;
@@ -210,5 +203,4 @@ public class Process implements Comparable<Process> {
 	public void setFixedBurstTime(int fixedBurstTime) {
 		FixedBurstTime = fixedBurstTime;
 	}
->>>>>>> 46c25b5905050e3c366cc639c18258f68dfa9ab9
 }
