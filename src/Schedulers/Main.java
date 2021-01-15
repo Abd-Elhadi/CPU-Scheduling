@@ -50,7 +50,7 @@ public class Main {
 
 		}
 		else if(option == 2) {
-			RoundRobin RRS = new RoundRobin(Processes, RRQuantum);
+			RoundRobin RRS = new RoundRobin();
 		}
 		else if(option == 3) {
 			PriorityScheduling pps = new PriorityScheduling(Processes, 2);
