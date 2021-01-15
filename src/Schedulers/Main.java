@@ -55,6 +55,7 @@ public class Main {
 		else if(option == 3) {
 			PriorityScheduling pps = new PriorityScheduling(Processes, 2);
 			pps.start();
+			//PreemptivePriority PPS = new PreemptivePriority(Processes);
 
 		}
 		else if(option == 4)  {
