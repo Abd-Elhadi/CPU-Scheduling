@@ -7,17 +7,21 @@ public class Main {
 
 	static public void main (String[] arg) {
 		int numberOfProcesses;
-		int RRQuantum;
+		int RRQuantum=0;
 
 		ArrayList<Process> Processes = new ArrayList<Process>();
 
 		Scanner input = new Scanner(System.in);
 
+
+		System.out.println("Select the Scheduler you want to use:"
+				+ "\n[1] Preemptive Shortest- Job First (SJF)"
+				+ "\n[2] Round Robin (RR)"
+				+ "\n[3] Preemptive Priority Scheduling."
+				+ "\n[4] Multi Level Scheduling.");
+		int option = input.nextInt();
 		System.out.print("Enter the number of processes: ");
 		numberOfProcesses = input.nextInt();
-
-		System.out.print("Enter Round Robin Time Quantum: ");
-		RRQuantum = input.nextInt();
 
 
 		// Read Processes
@@ -31,26 +35,33 @@ public class Main {
 			p.setArrivalTime(input.nextInt()) ;
 
 			System.out.print( (i+1) + "th Process burst time: ");
-			p.setBurstTime(input.nextInt());
+			int burstT=input.nextInt();
+			p.setBurstTime(burstT);
+			p.setFixedBurstTime(burstT);
 
-			System.out.print( (i+1) + "th Process queue number: ");
-			p.setPriority(input.nextInt());
+			//get queue number for multi level
+			if(option==4) {
+				System.out.print((i + 1) + "th Process queue number: ");
+				p.setPriority(input.nextInt());
+			}
 
-			Processes.add(p);	
+			Processes.add(p);
 		}
 
-		System.out.println("Select the Scheduler you want to use:"
-				+ "\n[1] Preemptive Shortest- Job First (SJF)"
-				+ "\n[2] Round Robin (RR)"
-				+ "\n[3] Preemptive Priority Scheduling."
-				+ "\n[4] Multi Level Scheduling.");
-		int option = input.nextInt();
+		//get rr time
+		if(option==4 || option==2){
+			System.out.print("Enter Round Robin Time Quantum: ");
+			RRQuantum = input.nextInt();
+		}
+
 		if(option == 1) {
 			ShortestJobFirst SJF = new ShortestJobFirst(Processes);
 
 		}
 		else if(option == 2) {
-			RoundRobin RRS = new RoundRobin(Processes, RRQuantum);
+
+			RoundRobin.FindAvg(Processes,RRQuantum);
+
 		}
 		else if(option == 3) {
 			PriorityScheduling pps = new PriorityScheduling(Processes, 2);
@@ -58,6 +69,7 @@ public class Main {
 
 		}
 		else if(option == 4)  {
+
 			MultiLevelScheduling MLS = new MultiLevelScheduling(Processes, RRQuantum);
 		}
 		else if (option == 5) {
