@@ -22,8 +22,16 @@ public class Main {
 		int option = input.nextInt();
 		System.out.print("Enter the number of processes: ");
 		numberOfProcesses = input.nextInt();
-
-
+		
+		System.out.println();
+		
+		//get rr time
+		if(option==4 || option==2){
+			System.out.print("Enter Round Robin Time Quantum: ");
+			RRQuantum = input.nextInt();
+		}
+		System.out.println();
+		
 		// Read Processes
 		for(int i = 0 ; i < numberOfProcesses; ++i) {
 			input = new Scanner(System.in);
@@ -40,20 +48,17 @@ public class Main {
 			p.setBurstTime(burstT);
 			p.setFixedBurstTime(burstT);
 
-			//get queue number for multi level
+			//get queue number for multi level and priority
 			if(option==4||option==3) {
 				System.out.print( "Process " + (i+1) + " queue number: ");
 				p.setPriority(input.nextInt());
 			}
-
+			System.out.println("===========================\n");
+			
 			Processes.add(p);
 		}
+		System.out.println();
 
-		//get rr time
-		if(option==4 || option==2){
-			System.out.print("Enter Round Robin Time Quantum: ");
-			RRQuantum = input.nextInt();
-		}
 
 		if(option == 1) {
 			ShortestJobFirst SJF = new ShortestJobFirst(Processes);
