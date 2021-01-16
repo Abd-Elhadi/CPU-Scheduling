@@ -29,8 +29,8 @@ public class Main {
 		if(option==4 || option==2){
 			System.out.print("Enter Round Robin Time Quantum: ");
 			RRQuantum = input.nextInt();
+			System.out.println();
 		}
-		System.out.println();
 		
 		// Read Processes
 		for(int i = 0 ; i < numberOfProcesses; ++i) {
@@ -50,7 +50,10 @@ public class Main {
 
 			//get queue number for multi level and priority
 			if(option==4||option==3) {
-				System.out.print( "Process " + (i+1) + " queue number: ");
+				if(option == 4)
+					System.out.print( "Process " + (i+1) + " queue number: ");
+				else
+					System.out.print( "Process " + (i+1) + " priority number: ");
 				p.setPriority(input.nextInt());
 			}
 			System.out.println("===========================\n");
