@@ -1,5 +1,4 @@
 package Schedulers;
-
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -7,12 +6,14 @@ public class Main {
 
 	static public void main (String[] arg) {
 		int numberOfProcesses;
-		int RRQuantum=0;
+		int RRQuantum = 0;
 
 		ArrayList<Process> Processes = new ArrayList<Process>();
 
 		Scanner input = new Scanner(System.in);
 
+		System.out.print("Enter the number of processes: ");
+		numberOfProcesses = input.nextInt();
 
 		System.out.println("Select the Scheduler you want to use:"
 				+ "\n[1] Preemptive Shortest- Job First (SJF)"
@@ -20,39 +21,39 @@ public class Main {
 				+ "\n[3] Preemptive Priority Scheduling."
 				+ "\n[4] Multi Level Scheduling.");
 		int option = input.nextInt();
-		System.out.print("Enter the number of processes: ");
-		numberOfProcesses = input.nextInt();
-
+		//System.out.print("Enter the number of processes: ");
+		//numberOfProcesses = input.nextInt();
+		
+		//get rr time
+		if(option==4 || option==2){
+			System.out.print("\nEnter Round Robin Time Quantum: ");
+			RRQuantum = input.nextInt();
+		}
+		System.out.println();
 
 		// Read Processes
 		for(int i = 0 ; i < numberOfProcesses; ++i) {
 			input = new Scanner(System.in);
 			Process p = new Process();
-			System.out.print( (i+1) + "th Process name: ");
+			System.out.print( "Process " + (i+1) + " name: ");
 			p.setName(input.nextLine());
 
-			System.out.print( (i+1) + "th Process arrival time: ");
+			System.out.print( "Process " + (i+1) + " arrival time: ");
 			p.setArrivalTime(input.nextInt()) ;
 
-			System.out.print( (i+1) + "th Process burst time: ");
-			int burstT=input.nextInt();
-			p.setBurstTime(burstT);
-			p.setFixedBurstTime(burstT);
-
-			//get queue number for multi level
-			if(option==4) {
-				System.out.print((i + 1) + "th Process queue number: ");
+			System.out.print( "Process " + (i+1) + " burst time: ");
+			p.setBurstTime(input.nextInt());
+			
+			if (option == 4 || option == 3) {
+				System.out.print( "Process " + (i+1) + " queue number: ");
 				p.setPriority(input.nextInt());
 			}
 
-			Processes.add(p);
+			Processes.add(p);	
+			
+			System.out.println("===========================\n");
 		}
-
-		//get rr time
-		if(option==4 || option==2){
-			System.out.print("Enter Round Robin Time Quantum: ");
-			RRQuantum = input.nextInt();
-		}
+		System.out.println();
 
 		if(option == 1) {
 			ShortestJobFirst SJF = new ShortestJobFirst(Processes);
@@ -64,8 +65,8 @@ public class Main {
 
 		}
 		else if(option == 3) {
-			PriorityScheduling pps = new PriorityScheduling(Processes, 2);
-			pps.start();
+			PriorityScheduling pps = new PriorityScheduling(Processes);
+			pps.Schedule();
 
 		}
 		else if(option == 4)  {

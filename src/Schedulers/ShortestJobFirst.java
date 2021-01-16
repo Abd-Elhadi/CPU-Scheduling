@@ -63,6 +63,7 @@ public class ShortestJobFirst {
 	
 				// Calculate waiting time 
 				wt[shortest] = finish_time - proc.get(shortest).getBurstTime() - proc.get(shortest).getArrivalTime(); 
+				System.out.println("shortest: " + wt[shortest]);
 	
 				if (wt[shortest] < 0) 
 					wt[shortest] = 0; 

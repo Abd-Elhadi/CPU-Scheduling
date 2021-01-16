@@ -187,6 +187,7 @@ public class Process implements Comparable<Process> {
         --Priority;
     }
 
+
 	public int getExitTime() {
 		return ExitTime;
 	}
