@@ -4,11 +4,13 @@ import java.util.ArrayList;
 public class Process implements Comparable<Process> {
 	private String Name; 
 	private int BurstTime;
+	private int FixedBurstTime;
 	private int ArrivalTime;
 	private int Priority;
 	private int WaitingTime;
 	private int remainingTime;
 	private int TurnaroundTime;
+	private int ExitTime;
 
 	private int QuantumTime; // this will be used in RR Scheduling
 	ArrayList<Integer> HistoryOfQuantum = new ArrayList<Integer>(); 
@@ -27,6 +29,7 @@ public class Process implements Comparable<Process> {
 	public Process(Process P) {
 		Name = P.getName();
 		BurstTime = P.getBurstTime();
+		FixedBurstTime = P.getFixedBurstTime();
 		remainingTime = P.getBurstTime();
 		ArrivalTime = P.getArrivalTime();
 		Priority = P.getPriority();
@@ -39,6 +42,7 @@ public class Process implements Comparable<Process> {
 	public Process(String Name, int arrivalTime, int burstTime , int queueNumber) {
 		this.Name = Name;
 		this.BurstTime = burstTime;
+		this.FixedBurstTime=burstTime;
 		remainingTime = burstTime;
 		this.ArrivalTime = arrivalTime;
 		this.Priority = queueNumber;	
@@ -182,4 +186,21 @@ public class Process implements Comparable<Process> {
     public void decrementPriority(){
         --Priority;
     }
+
+
+	public int getExitTime() {
+		return ExitTime;
+	}
+
+	public void setExitTime(int exitTime) {
+		ExitTime = exitTime;
+	}
+
+	public int getFixedBurstTime() {
+		return FixedBurstTime;
+	}
+
+	public void setFixedBurstTime(int fixedBurstTime) {
+		FixedBurstTime = fixedBurstTime;
+	}
 }

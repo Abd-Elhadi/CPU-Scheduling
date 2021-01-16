@@ -35,12 +35,13 @@ public class PriorityScheduling {
         int switchno = 0;
         System.out.println("--------------Priority Scheduling--------------");
 
-        for (time = 0;processes.size() > 0; time++) {
+        for (time = 0; processes.size() > 0; time++) {
 
-            for(int i=0;i<processes.size();++i){        // check for new processes' arrival
+            for(int i = 0; i < processes.size(); ++i){        // check for new processes' arrival
                 if( processes.get(i).getArrivalTime() <= time && !priorityQ.contains(processes.get(i))) {
                     priorityQ.add(processes.get(i));
                     ++switchno;
+                    System.out.println("check for new processes' arrival");
                 }
             }
 
@@ -49,7 +50,7 @@ public class PriorityScheduling {
                     top = priorityQ.peek();             // context switching should be done here
                     System.out.println("Process:" + top.getName()
                             + " is running, remaining time = " + top.getBurstTime());
-                    if(switchno>0)
+                    if(switchno > 0)
                         for (int i = 0; i < processes.size(); ++i)     // add context switching time to waiting time
                             if (priorityQ.contains(processes.get(i)))
                                 processes.get(i).setWaitingTime(processes.get(i).getWaitingTime() + contextSwitch);
@@ -88,5 +89,4 @@ public class PriorityScheduling {
         System.out.println("===============================================");
 
     }
-
 }
