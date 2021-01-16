@@ -28,20 +28,21 @@ public class Main {
 		for(int i = 0 ; i < numberOfProcesses; ++i) {
 			input = new Scanner(System.in);
 			Process p = new Process();
-			System.out.print( (i+1) + "th Process name: ");
+
+			System.out.print( "Process " + (i+1) + " name: ");
 			p.setName(input.nextLine());
 
-			System.out.print( (i+1) + "th Process arrival time: ");
+			System.out.print( "Process " + (i+1) + " arrival time: ");
 			p.setArrivalTime(input.nextInt()) ;
 
-			System.out.print( (i+1) + "th Process burst time: ");
+			System.out.print( "Process " + (i+1) + " burst time: ");
 			int burstT=input.nextInt();
 			p.setBurstTime(burstT);
 			p.setFixedBurstTime(burstT);
 
 			//get queue number for multi level
-			if(option==4) {
-				System.out.print((i + 1) + "th Process queue number: ");
+			if(option==4||option==3) {
+				System.out.print( "Process " + (i+1) + " queue number: ");
 				p.setPriority(input.nextInt());
 			}
 
@@ -64,8 +65,8 @@ public class Main {
 
 		}
 		else if(option == 3) {
-			//PriorityScheduling pps = new PriorityScheduling(Processes, 2);
-			//pps.start();
+			PriorityScheduling pps = new PriorityScheduling(Processes);
+			pps.Schedule();
 
 		}
 		else if(option == 4)  {
